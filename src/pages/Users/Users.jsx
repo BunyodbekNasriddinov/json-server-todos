@@ -12,7 +12,7 @@ export const Users = () => {
         }
       })
       .catch((err) => console.log(err));
-  }, [users]);
+  }, []);
 
   return (
     <div className="container">
