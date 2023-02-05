@@ -1,0 +1,35 @@
+{
+  "users": [
+    {
+      "email": "arch@gmail.com",
+      "password": "$2a$10$hKpF76bSX11USBmgX2/9MuvVakMldyvIi6YABhLA6xsT1BxkyoR8K",
+      "first_name": "Arch",
+      "last_name": "Linux",
+      "id": 1
+    },
+    {
+      "email": "manjaro@gmail.com",
+      "password": "$2a$10$7DQRB0nJVubCikfdgZMsv.8WnSzagS1wnZprcycrwxZ1pbZ9N5WgW",
+      "first_name": "Manjaro",
+      "last_name": "Linux",
+      "id": 2
+    }
+  ],
+  "todos": [
+    {
+      "text": "Kitob o'qish",
+      "isCompleted": false,
+      "id": 1
+    },
+    {
+      "text": "Uxlash",
+      "isCompleted": false,
+      "id": 2
+    },
+    {
+      "text": "Kino ko'rish",
+      "isCompleted": false,
+      "id": 3
+    }
+  ]
+}
