@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { TokenContext } from "../../context/TokenContext";
 import { UserContext } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
-import { Form, Formik, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 export const Register = () => {
@@ -25,9 +25,9 @@ export const Register = () => {
       .required("Email required!!!")
       .email("Invalid email format"),
     password: Yup.string()
-      .required("Required!!!")
+      .required("Password required!!!")
       .min(3, "Password must be long 3 characters")
-      .max(12, "Password must be last 3 characters"),
+      .max(12, "Password must be last 12 characters"),
   });
 
   const handleSubmit = (values) => {
@@ -84,6 +84,9 @@ export const Register = () => {
             type="password"
             name="password"
           />
+          <span className="d-block text-danger fw-bold mb-1">
+            {<ErrorMessage name="password" />}
+          </span>
           <button className="btn btn-primary mt-3" type="submit">
             SEND
           </button>

@@ -53,14 +53,18 @@ export const Login = () => {
             type="email"
             name="email"
           />
-          <span className="d-block text-danger fw-bold mb-1">{<ErrorMessage name="email" />}</span>
+          <span className="d-block text-danger fw-bold mb-1">
+            {<ErrorMessage name="email" />}
+          </span>
           <Field
             className="form-control mt-3"
             placeholder="Password"
             type="password"
             name="password"
           />
-          <span className="d-block text-danger fw-bold mb-1">{<ErrorMessage name="password" />}</span>
+          <span className="d-block text-danger fw-bold mb-1">
+            {<ErrorMessage name="password" />}
+          </span>
           <button className="btn btn-primary mt-3" type="submit">
             SEND
           </button>
