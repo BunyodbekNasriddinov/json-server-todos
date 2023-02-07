@@ -13,23 +13,46 @@
       "first_name": "Manjaro",
       "last_name": "Linux",
       "id": 2
+    },
+    {
+      "email": "aaa@gmail.com",
+      "password": "$2a$10$P7APXHVbr/ho9dgDwOUR9eOewBPLZSTlk/OgHgiWY8bnhsAvrCXCq",
+      "first_name": "ali",
+      "last_name": "aliyev",
+      "id": 3
+    },
+    {
+      "email": "nasriddinoffbunyodbek@gmail.com",
+      "password": "$2a$10$R/Vvi0SgXRe0O1YK679St.DGNuX4/yCwpM7/cuuYKBp38C7A3y4Tm",
+      "first_name": "Bunyodbek ",
+      "last_name": "Nasriddinov",
+      "id": 4
+    },
+    {
+      "email": "xero@linux.com",
+      "password": "$2a$10$Z/RNTyGs.d39cmgMnrbMduyRtzYQtTnVHfIWdQiPdTAVe3MmAobe.",
+      "first_name": "Xero",
+      "last_name": "Linux",
+      "id": 5
+    },
+    {
+      "email": "nasriddinoffbunyodbek@gmail.co",
+      "password": "$2a$10$dovEBetBuh9IkJba.8KJGOZ1C6MbcGXz2GSe1HbzVEr.FvL0hSMNe",
+      "first_name": "Bunyodbek ",
+      "last_name": "Nasriddinov",
+      "id": 6
     }
   ],
   "todos": [
     {
       "text": "Kitob o'qish",
-      "isCompleted": true,
+      "isCompleted": false,
       "id": 1
     },
     {
-      "text": "Uxlash",
+      "text": "uxlash",
       "isCompleted": false,
       "id": 2
-    },
-    {
-      "text": "Kino ko'rish",
-      "isCompleted": false,
-      "id": 3
     }
   ]
 }

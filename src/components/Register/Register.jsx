@@ -1,32 +1,43 @@
 import axios from "axios";
-import { useContext, useRef } from "react";
+import { useContext } from "react";
 import { TokenContext } from "../../context/TokenContext";
 import { UserContext } from "../../context/UserContext";
+import { useNavigate } from "react-router-dom";
+import { Form, Formik, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
 export const Register = () => {
-  const firsNameRef = useRef();
-  const lastNameRef = useRef();
-  const emailRef = useRef();
-  const passwordRef = useRef();
   const { setToken } = useContext(TokenContext);
   const { setUser } = useContext(UserContext);
-  const nagigate = useNavigate();
+  const navigate = useNavigate();
 
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
+  const initialValues = {
+    first_name: "",
+    last_name: "",
+    email: "",
+    password: "",
+  };
 
+  const validateSchema = Yup.object({
+    first_name: Yup.string().required("First name required!!!"),
+    last_name: Yup.string().required("Last name required!!!"),
+    email: Yup.string()
+      .required("Email required!!!")
+      .email("Invalid email format"),
+    password: Yup.string()
+      .required("Required!!!")
+      .min(3, "Password must be long 3 characters")
+      .max(12, "Password must be last 3 characters"),
+  });
+
+  const handleSubmit = (values) => {
     axios
-      .post("http://localhost:8080/register", {
-        first_name: firsNameRef.current.value,
-        last_name: lastNameRef.current.value,
-        email: emailRef.current.value,
-        password: passwordRef.current.value,
-      })
+      .post("http://localhost:8080/register", values)
       .then((data) => {
         if (data.status === 201) {
           setToken(data.data.accessToken);
           setUser(data.data.user);
-          nagigate("/");
+          navigate("/");
         }
       })
       .catch((err) => console.log(err));
@@ -34,35 +45,50 @@ export const Register = () => {
 
   return (
     <div className="w-50 my-5 mx-auto shadow p-5">
-      <form onSubmit={(evt) => handleSubmit(evt)}>
-        <input
-          className="form-control mb-3"
-          ref={firsNameRef}
-          placeholder="Firs name"
-          type="text"
-        />
-        <input
-          className="form-control mb-3"
-          ref={lastNameRef}
-          placeholder="Last name"
-          type="text"
-        />
-        <input
-          className="form-control mb-3"
-          ref={emailRef}
-          placeholder="Email"
-          type="email"
-        />
-        <input
-          className="form-control mb-3"
-          ref={passwordRef}
-          placeholder="Password"
-          type="password"
-        />
-        <button className="btn btn-primary" type="submit">
-          SEND
-        </button>
-      </form>
+      <Formik
+        initialValues={initialValues}
+        validateSchema={validateSchema}
+        onSubmit={handleSubmit}
+      >
+        <Form>
+          <Field
+            className="form-control"
+            placeholder="First name"
+            type="text"
+            name="first_name"
+          />
+          <span className="d-block text-danger fw-bold mb-1">
+            {<ErrorMessage name="first_name" />}
+          </span>
+          <Field
+            className="form-control mt-3"
+            placeholder="Last name"
+            type="text"
+            name="last_name"
+          />
+          <span className="d-block text-danger fw-bold mb-1">
+            {<ErrorMessage name="last_name" />}
+          </span>
+          <Field
+            className="form-control mt-3"
+            placeholder="Email"
+            type="email"
+            name="email"
+          />
+          <span className="d-block text-danger fw-bold mb-1">
+            {<ErrorMessage name="email" />}
+          </span>
+          <Field
+            className="form-control mt-3"
+            placeholder="Password"
+            type="password"
+            name="password"
+          />
+          <button className="btn btn-primary mt-3" type="submit">
+            SEND
+          </button>
+        </Form>
+      </Formik>
     </div>
   );
 };
